@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etl-app-deployment
+  labels:
+    app: etl-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etl-app
+  template:
+    metadata:
+      labels:
+        app: etl-app
+    spec:
+      containers:
+      - name: etl-container
+        image: placeholder/image:latest # THIS WILL BE REPLACED BY THE PIPELINE
+        resources:
+          requests:
+            cpu: "250m" # 0.25 vCPU
+            memory: "256Mi"
+          limits:
+            cpu: "1"      # 1 vCPU - As per requirement
+            memory: "1Gi" # 1 GiB - As per requirement
+        volumeMounts:
+        - name: output-storage
+          mountPath: /app/output
+      volumes:
+      - name: output-storage
+        persistentVolumeClaim:
+          claimName: etl-output-pvc
