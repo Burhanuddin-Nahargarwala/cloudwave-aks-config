@@ -1,14 +1,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  # The 'generateName' field tells Kubernetes to use this as a prefix
-  # and to automatically append a unique random suffix for each new Job.
-  generateName: etl-app-run-
+  name: etl-app-run
 spec:
   # The template for the pod is almost identical to what was in the Deployment.
   template:
-    # --- THIS METADATA SECTION IS THE FIX ---
-    # Pods should have labels to identify them, even when created by a Job.
     metadata:
       labels:
         app: etl-app
@@ -16,7 +12,7 @@ spec:
       containers:
       - name: etl-container
         # This will be updated by the CI pipeline
-        image: placeholder/image:latest 
+        image: cloudwaveacr26077.azurecr.io/etl-app:fc0013fd9700e3075c69dfbf77c2032ba4cc1126
         resources:
           requests:
             cpu: "250m"
