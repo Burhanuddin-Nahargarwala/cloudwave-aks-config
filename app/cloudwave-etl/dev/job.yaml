@@ -12,7 +12,7 @@ spec:
       containers:
       - name: etl-container
         # This will be updated by the CI pipeline
-        image: placeholder/image:latest 
+        image: cloudwaveacr26077.azurecr.io/etl-app:fc0013fd9700e3075c69dfbf77c2032ba4cc1126
         resources:
           requests:
             cpu: "250m"
