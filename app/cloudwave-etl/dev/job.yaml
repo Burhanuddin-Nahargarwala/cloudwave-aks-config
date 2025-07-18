@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   # The 'generateName' field tells Kubernetes to use this as a prefix
-  # and to automatically append a unique random suffix for each new Job.
+  # and to automatically append a unique random suffix for each new Job
   generateName: etl-app-run-
 spec:
   # The template for the pod is almost identical to what was in the Deployment.
