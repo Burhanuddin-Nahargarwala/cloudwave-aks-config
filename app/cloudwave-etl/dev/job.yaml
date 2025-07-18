@@ -1,10 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  # The name is generated to be unique for each run to avoid conflicts.
-  # Argo CD can help manage this, or we can add a unique suffix.
-  # For simplicity, we'll let the CI pipeline handle this later if needed.
-  name: etl-app-run
+  # The 'generateName' field tells Kubernetes to use this as a prefix
+  # and to automatically append a unique random suffix for each new Job.
+  generateName: etl-app-run-
 spec:
   # The template for the pod is almost identical to what was in the Deployment.
   template:
