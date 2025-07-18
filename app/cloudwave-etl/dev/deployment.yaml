@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: etl-container
-        image: placeholder/image:latest # THIS WILL BE REPLACED BY THE PIPELINE
+        image: cloudwaveacr26077.azurecr.io/etl-app:93a9478085b9469b276893d35f700b58a2255819
         resources:
           requests:
             cpu: "250m" # 0.25 vCPU
